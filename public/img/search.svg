@@ -1,0 +1,15 @@
+<svg id="그룹_276" data-name="그룹 276" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <path id="패스_66" data-name="패스 66" class="cls-1" d="M0,0H14V14H0Z"/>
+  <path id="패스_67" data-name="패스 67" class="cls-2" d="M10.291,9.416H9.831l-.163-.158a3.8,3.8,0,1,0-.408.408l.158.163v.461L11.9,12.771a.615.615,0,0,0,.869-.869Zm-3.5,0A2.625,2.625,0,1,1,9.416,6.791,2.621,2.621,0,0,1,6.791,9.416Z" transform="translate(-1.25 -0.975)"/>
+</svg>
