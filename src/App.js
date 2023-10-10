@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+
 function Header(){
   return <header>
     <h1><a href="#"><img src="img/logo.png" />FirstClub</a></h1>
@@ -19,7 +20,7 @@ function Section(){
       </div>
     </div>
     <div className="btnbox">
-        <button type="submit">로그인</button>
+        <button type="submit">로그인test</button>
         <button type="sign-up">회원가입</button>
     </div>
   </section>
