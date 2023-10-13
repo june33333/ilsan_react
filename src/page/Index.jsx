@@ -1,9 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import logo from "../images/mainlogo.png";
-
-function LinkLogo() {}
 
 const Intro = () => {
   return (
@@ -49,21 +46,13 @@ const Header = () => {
     <HeaderNav>
       <LogoUl>
         <li>
-          <LinkLogo to="#">
-            <img
-              src={process.env.PUBLIC_URL + "/img/mainlogo.png"}
-              alt="로고"
-            />
-          </LinkLogo>
+          <LinkLogo to="#">FistClub</LinkLogo>
         </li>
       </LogoUl>
       <TelUl>ddd</TelUl>
       <CenterUl>
         <li>
           <Link to="#">신고/협박</Link>
-        </li>
-        <li>
-          <Link to="#">게임</Link>
         </li>
         <li>
           <Link to="#">고객센터</Link>
@@ -207,6 +196,8 @@ const HeaderNav = styled.div`
   align-items: center;
 `;
 
+const LinkLogo = styled.a``;
+
 const LogoUl = styled.div`
   display: inline-flex;
   align-items: center;
@@ -217,7 +208,7 @@ const TelUl = styled.ul`
   align-items: center;
 `;
 const CenterUl = styled.ul`
-  width: 300px;
+  width: 230px;
   justify-content: space-between;
   display: inline-flex;
   align-items: center;
