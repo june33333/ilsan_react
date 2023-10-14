@@ -46,10 +46,13 @@ const Header = () => {
     <HeaderNav>
       <LogoUl>
         <li>
-          <LinkLogo to="#">FistClub</LinkLogo>
+          <LinkLogo to="#">
+            <LogoImg src="img/logo.png" alt="Logo" />
+            FirstClub
+          </LinkLogo>
         </li>
       </LogoUl>
-      <TelUl>ddd</TelUl>
+      <TelUl></TelUl>
       <CenterUl>
         <li>
           <Link to="#">신고/협박</Link>
@@ -189,16 +192,23 @@ const IntroSpan = styled.span`
 
 const HeaderNav = styled.div`
   width: 1200px;
-  height: auto;
+  height: 100px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-const LinkLogo = styled.a``;
-
-const LogoUl = styled.div`
+const LinkLogo = styled.a`
+  font-weight: bold;
+  font-size: 35px;
+  vertical-align: sub;
+`;
+const LogoImg = styled.img`
+  vertical-align: sub;
+  margin-right: 10px;
+`;
+const LogoUl = styled.ul`
   display: inline-flex;
   align-items: center;
 `;
@@ -242,7 +252,10 @@ const MainInput = styled.input`
   border-radius: 7px;
   font-size: 18px;
   border-color: #eee;
-  background-image: url();
+  background-image: url(img/search.png);
+  background-repeat: no-repeat;
+  background-position-x: 455px;
+  background-position-y: center;
 `;
 const MainP = styled.p`
   color: #fff;
@@ -268,7 +281,7 @@ const ValueLi = styled.li`
   width: 300px;
   height: 130px;
   text-align: center;
-  border: 3px solid #f0f8ff;
+  border: 3px solid skyblue;
   border-radius: 17px;
 `;
 

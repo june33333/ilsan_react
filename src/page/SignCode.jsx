@@ -6,7 +6,7 @@ const Header = () => {
     <ContainerHeader>
       <h1>
         <a href="/">
-          <img src="img/logo.png" alt="Logo" />
+          <LogoImg src="img/logo.png" alt="Logo" />
           FirstClub
         </a>
       </h1>
@@ -56,7 +56,10 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
 `;
-
+const LogoImg = styled.img`
+  vertical-align: sub;
+  margin-right: 10px;
+`;
 const BtnBox = styled.div`
   display: flex;
   width: 314px;
