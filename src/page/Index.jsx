@@ -3,39 +3,25 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 let note = 0;
+let point = 999999;
 
-let total = "890,340";
-let today = "150";
-let todayser = "23,206";
-let company = "8,913";
+let total = "1,200,000";
+let today = Math.floor(Math.random() * 101) + 100;
+let todayser = Math.floor(Math.random() * 1000) + 1;
+let company = "1,250";
 
 const Intro = () => {
   return (
     <IntroInfo>
-      <IntroUl>
-        <HomeLi>
-          <LinkIntro to="#">퍼스트클럽을 시작페이지로</LinkIntro>
-        </HomeLi>
-        <IntroLi>
-          <LinkIntro to="#">즐겨찾기 추가</LinkIntro>
-        </IntroLi>
-      </IntroUl>
-      <YellowUl>
-        <IntroLi>
-          <YellowLinkIntro to="#">
-            퍼스트클럽은 지금까지도 무료 앞으로도 100% 무료 정보 제공 사이트
-            입니다 퍼스트클럽은 분점이 없습니다 먹튀
-          </YellowLinkIntro>
-        </IntroLi>
-      </YellowUl>
+      <IntroUl></IntroUl>
       <UserUl>
         <UserLi>
-          <LinkIntro to="#">코코몽이님</LinkIntro>
+          <LinkIntro to="#">
+            <IntroSpan>{note}</IntroSpan> 코코몽이님
+          </LinkIntro>
         </UserLi>
         <UserLi>
-          <LinkIntro to="#">
-            쪽지 : <IntroSpan>{note}</IntroSpan> 통
-          </LinkIntro>
+          <LinkIntro to="#">{point} 포인트</LinkIntro>
         </UserLi>
         <UserLi>
           <LinkIntro to="#">회원정보</LinkIntro>
@@ -62,7 +48,10 @@ const Header = () => {
       <TelUl></TelUl>
       <CenterUl>
         <li>
-          <Link to="#">신고/협박</Link>
+          <Link to="#">조회/등록</Link>
+        </li>
+        <li>
+          <Link to="#">제휴업체</Link>
         </li>
         <li>
           <Link to="#">고객센터</Link>
@@ -78,12 +67,13 @@ const Section = () => {
       <MainH1>사고자 검색</MainH1>
       <MainH3>최상의 검색 조건을 제공하겠습니다</MainH3>
       <MainInput type="text" placeholder="예) 이름 검색 = 필수입력"></MainInput>
-      <MainP>검색시 이름과 전화번호는 필수입력 입니다.</MainP>
       <MainInput type="text" placeholder="예) 출생년도 2자리"></MainInput>
+      <MainP>검색시 이름과 전화번호는 필수입력 입니다.</MainP>
       <MainInput
         type="text"
         placeholder="예) 전화번호 01012345678 형식 = 필수입력"
       ></MainInput>
+      <CheckButton>조회</CheckButton>
     </SectionMain>
   );
 };
@@ -121,6 +111,18 @@ const Total = () => {
   );
 };
 
+const Check = () => {
+  return (
+    <CheckForm>
+      <Chet>
+        <ChetBox>확성기 박스 / 실시간 채팅 박스</ChetBox>
+        <DetailBox>실시간 검색내용 박스 양** 010-****-3333</DetailBox>
+      </Chet>
+      <Regis></Regis>
+    </CheckForm>
+  );
+};
+
 const Footer = () => {
   return (
     <FooterForm>
@@ -136,6 +138,7 @@ const Index = () => {
       <Header />
       <Section />
       <Total />
+      <Check />
       <Footer />
     </>
   );
@@ -154,21 +157,10 @@ const LinkIntro = styled.a`
   font-size: 13px;
 `;
 
-const YellowLinkIntro = styled.a`
-  color: Yellow;
-  font-size: 13px;
-`;
-
 const IntroUl = styled.ul`
   display: inline-flex;
   align-items: center;
   padding-left: 5%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-`;
-const YellowUl = styled.ul`
-  display: inline-flex;
-  align-items: center;
   white-space: nowrap;
   text-overflow: ellipsis;
 `;
@@ -193,12 +185,18 @@ const OutLi = styled.li``;
 
 const IntroLi = styled.li``;
 
-const IntroSpan = styled.span`
-  color: red;
+const IntroSpan = styled.div`
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: red;
+  text-align: center;
+  border-radius: 15px;
+  color: #fff;
 `;
 
 const HeaderNav = styled.div`
-  width: 1200px;
+  width: 1350px;
   height: 100px;
   margin: 0 auto;
   display: flex;
@@ -225,7 +223,7 @@ const TelUl = styled.ul`
   align-items: center;
 `;
 const CenterUl = styled.ul`
-  width: 230px;
+  width: 300px;
   justify-content: space-between;
   display: inline-flex;
   align-items: center;
@@ -264,6 +262,25 @@ const MainInput = styled.input`
   background-position-x: 455px;
   background-position-y: center;
 `;
+const CheckButton = styled.button`
+  margin-top: 38px;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  border: 0px;
+  letter-spacing: 1px;
+  font-size: 18px;
+  border-radius: 5px;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 172, 238, 1) 0%,
+    rgba(2, 126, 251, 1) 100%
+  );
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+`;
 const MainP = styled.p`
   color: #fff;
   margin-top: 15px;
@@ -295,7 +312,34 @@ const ValueLi = styled.li`
 const ValueLink = styled.a`
   font-size: 55px;
 `;
-
+const CheckForm = styled.div`
+  display: flex;
+`;
+const Chet = styled.div`
+  width: 1350px;
+  height: auto;
+`;
+const ChetBox = styled.div`
+  width: 300px;
+  border: 1px solid #eee;
+  height: 400px;
+  margin: 0 auto;
+  margin-top: 5px;
+  text-align: center;
+  background: #eee;
+  line-height: 400px;
+`;
+const DetailBox = styled.div`
+  width: 300px;
+  border: 1px solid #eee;
+  height: 400px;
+  margin: 0 auto;
+  margin-top: 5px;
+  text-align: center;
+  background: #eee;
+  line-height: 400px;
+`;
+const Regis = styled.div``;
 const FooterForm = styled.div`
   align-items: center;
   margin-top: 30px;
