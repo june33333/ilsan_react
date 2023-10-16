@@ -44,6 +44,10 @@ const Section = () => {
         <SubmitButton>로그인</SubmitButton>
         <SignupButton>회원가입</SignupButton>
       </BtnBox>
+      <TelBox>
+        <ImgTel src="img/tel.png" alt="텔레그램 아이콘"></ImgTel>
+        <h3>텔레그램 ID @ </h3>
+      </TelBox>
     </BoxSection>
   );
 };
@@ -156,6 +160,20 @@ const SignupButton = styled.button`
   );
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+`;
+
+const TelBox = styled.div`
+  margin-top: 25px;
+  width: 313px;
+  height: 70px;
+  display: flex;
+  line-height: 70px;
+  text-align: center;
+`;
+const ImgTel = styled.img`
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
 `;
 
 export default Login;

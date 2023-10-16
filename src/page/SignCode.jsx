@@ -34,8 +34,67 @@ const Section = () => {
         <ClearButton>확인</ClearButton>
         <CancelButton>취소</CancelButton>
       </BtnBox>
+      <div className="joinform">
+        <div className="inputenter">
+          <JoinInput
+            type="text"
+            minlength="5"
+            maxlength="13"
+            title="아이디"
+            placeholder="아이디를 입력해주세요"
+          ></JoinInput>
+          <AlertId>아이디를 입력해주세요.</AlertId>
+        </div>
+        <div className="inputenter">
+          <JoinInput
+            type="password"
+            minlength="5"
+            maxlength="13"
+            title="패스워드"
+            placeholder="비밀번호를 입력해주세요"
+          ></JoinInput>
+        </div>
+        <AlertPw>비밀번호를 입력해주세요.</AlertPw>
+        <div className="inputenter">
+          <JoinInput
+            type="password"
+            minlength="5"
+            maxlength="13"
+            title="패스워드"
+            placeholder="비밀번호를 재 입력해주세요"
+          ></JoinInput>
+          <AlertRepw>비밀번호를 다시한번 입력해주세요.</AlertRepw>
+        </div>
+        <div className="inputenter">
+          <JoinInput
+            type="text"
+            minlength="5"
+            maxlength="13"
+            title="닉네임"
+            placeholder="닉네임을 입력해주세요"
+          ></JoinInput>
+          <AlertName>닉네임을 입력해주세요.</AlertName>
+        </div>
+        <div className="inputenter">
+          <JoinInput
+            type="telegram"
+            minlength="5"
+            maxlength="13"
+            title="패스워드"
+            placeholder="텔레그램 ID를 입력해주세요"
+          ></JoinInput>
+          <AlertTel>텔레그램 ID를 입력해주세요.</AlertTel>
+        </div>
+        <SubmitClear>회원가입</SubmitClear>
+      </div>
     </BoxSection>
   );
+};
+
+const LoginForm = () => {
+  <Form>
+    <h1>First Clubdddddddd</h1>
+  </Form>;
 };
 
 const SignCode = () => {
@@ -44,6 +103,7 @@ const SignCode = () => {
       <Container>
         <Header />
         <Section />
+        <LoginForm />
       </Container>
     </>
   );
@@ -135,4 +195,58 @@ const CancelButton = styled.button`
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
 `;
 
+const JoinInput = styled.input`
+  display: flex;
+  margin: 0 auto;
+  font-size: 15px;
+  padding-left: 15px;
+  width: 293px;
+  height: 46px;
+  border: 1px solid #2a2a2a;
+`;
+
+const AlertId = styled.span`
+  margin-top: 5px;
+  font-size: 13px;
+  padding-left: 10px;
+  color: blue;
+`;
+const AlertPw = styled.span`
+  margin-top: 5px;
+  font-size: 13px;
+  padding-left: 10px;
+  color: blue;
+`;
+const AlertRepw = styled.span`
+  margin-top: 5px;
+  font-size: 13px;
+  padding-left: 10px;
+  color: blue;
+`;
+const AlertName = styled.span`
+  margin-top: 5px;
+  font-size: 13px;
+  padding-left: 10px;
+  color: blue;
+`;
+const AlertTel = styled.span`
+  margin-top: 5px;
+  font-size: 13px;
+  padding-left: 10px;
+  color: blue;
+`;
+const SubmitClear = styled.button`
+  width: 310px;
+  height: 46px;
+  text-align: center;
+  margin-top: 15px;
+  background-color: #1348d5;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  border: 0px;
+  letter-spacing: 1px;
+`;
+
+const Form = styled.div``;
 export default SignCode;

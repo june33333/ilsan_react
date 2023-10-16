@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+let note = 0;
+
+let total = "890,340";
+let today = "150";
+let todayser = "23,206";
+let company = "8,913";
 
 const Intro = () => {
   return (
@@ -27,7 +34,7 @@ const Intro = () => {
         </UserLi>
         <UserLi>
           <LinkIntro to="#">
-            쪽지 : <IntroSpan>0</IntroSpan> 통
+            쪽지 : <IntroSpan>{note}</IntroSpan> 통
           </LinkIntro>
         </UserLi>
         <UserLi>
@@ -86,25 +93,25 @@ const Total = () => {
     <TotalValue>
       <ValueUl>
         <ValueLi>
-          <ValueLink to="#">890,340</ValueLink>
+          <ValueLink to="#">{total}</ValueLink>
           <br></br>
           <br></br>
           <span>총 등록건수</span>
         </ValueLi>
         <ValueLi>
-          <ValueLink to="#">150</ValueLink>
+          <ValueLink to="#">{today}</ValueLink>
           <br></br>
           <br></br>
           <span>오늘등록 건수</span>
         </ValueLi>
         <ValueLi>
-          <ValueLink to="#">23,206</ValueLink>
+          <ValueLink to="#">{todayser}</ValueLink>
           <br></br>
           <br></br>
           <span>오늘검색 건수</span>
         </ValueLi>
         <ValueLi>
-          <ValueLink to="#">8,913</ValueLink>
+          <ValueLink to="#">{company}</ValueLink>
           <br></br>
           <br></br>
           <span>가입업체수</span>
