@@ -36,28 +36,30 @@ const Intro = () => {
 
 const Header = () => {
   return (
-    <HeaderNav>
-      <LogoUl>
-        <li>
-          <LinkLogo to="#">
-            <LogoImg src="img/logo.png" alt="Logo" />
-            FirstClub
-          </LinkLogo>
-        </li>
-      </LogoUl>
-      <TelUl></TelUl>
-      <CenterUl>
-        <li>
-          <Link to="#">조회/등록</Link>
-        </li>
-        <li>
-          <Link to="#">제휴업체</Link>
-        </li>
-        <li>
-          <Link to="#">고객센터</Link>
-        </li>
-      </CenterUl>
-    </HeaderNav>
+    <HeaderBg>
+      <HeaderNav>
+        <LogoUl>
+          <li>
+            <LinkLogo to="#">
+              <LogoImg src="img/logo.png" alt="Logo" />
+              FirstClub
+            </LinkLogo>
+          </li>
+        </LogoUl>
+        <TelUl></TelUl>
+        <CenterUl>
+          <li>
+            <Link to="#">조회/등록</Link>
+          </li>
+          <li>
+            <Link to="#">제휴업체</Link>
+          </li>
+          <li>
+            <Link to="#">고객센터</Link>
+          </li>
+        </CenterUl>
+      </HeaderNav>
+    </HeaderBg>
   );
 };
 
@@ -114,11 +116,85 @@ const Total = () => {
 const Check = () => {
   return (
     <CheckForm>
+      <BannerBox1>
+        <img src="img/banner01.png"></img>
+      </BannerBox1>
       <Chet>
         <ChetBox>확성기 박스 / 실시간 채팅 박스</ChetBox>
         <DetailBox>실시간 검색내용 박스 양** 010-****-3333</DetailBox>
       </Chet>
-      <Regis></Regis>
+      <Regis>
+        <RegisBtn>
+          <RegBtn>
+            <RegBtnImg src="img/regispen.png"></RegBtnImg>등록하기
+          </RegBtn>
+        </RegisBtn>
+        <ScheDule>
+          <ScheDuleUl>
+            <ScheDuleLi>이름</ScheDuleLi>
+            <ScheDuleLi>생년월일</ScheDuleLi>
+            <ScheDuleLi>
+              은행명 <BankBtn>+</BankBtn>
+            </ScheDuleLi>
+            <ScheDuleLi>
+              계좌번호 <Account>+</Account>
+            </ScheDuleLi>
+            <ScheDuleLi>
+              전화번호 <Phone>+</Phone>
+            </ScheDuleLi>
+            <ScheDuleLi>거주지역</ScheDuleLi>
+            <ScheDuleLi>비상연락망</ScheDuleLi>
+            <ScheDuleLi>등록일시</ScheDuleLi>
+            <ScheDuleLi>등록인</ScheDuleLi>
+          </ScheDuleUl>
+          <ScheInputUl>
+            <ScheInputLi>
+              <ScheInput></ScheInput>
+            </ScheInputLi>
+            <ScheInputLi>
+              <ScheInput></ScheInput>
+            </ScheInputLi>
+            <ScheInputLi>
+              <ScheInput></ScheInput>
+            </ScheInputLi>
+            <ScheInputLi>
+              <ScheInput></ScheInput>
+            </ScheInputLi>
+            <ScheInputLi>
+              <ScheInput></ScheInput>
+            </ScheInputLi>
+            <ScheInputLi>
+              <ScheInput></ScheInput>
+            </ScheInputLi>
+            <ScheInputLi>
+              <ScheInput></ScheInput>
+            </ScheInputLi>
+            <ScheInputLi>
+              <ScheInput></ScheInput>
+            </ScheInputLi>
+            <ScheInputLi>
+              <ScheInput></ScheInput>
+            </ScheInputLi>
+          </ScheInputUl>
+        </ScheDule>
+        <NoteDiv>
+          <NoteInput
+            type="text"
+            placeholder="사고내용을 입력해주세요"
+          ></NoteInput>
+          <NoteBtnBox>
+            <NoteBtn>추가정보등록</NoteBtn>
+            <NoteBtn>비상연락망 조회</NoteBtn>
+            <NoteBtn>조회기록</NoteBtn>
+          </NoteBtnBox>
+        </NoteDiv>
+        <RcBox>
+          <RegisCheckButton>등록</RegisCheckButton>
+        </RcBox>
+      </Regis>
+      <BannerBox2>
+        <img src="img/banner02.png"></img>
+      </BannerBox2>
     </CheckForm>
   );
 };
@@ -150,6 +226,7 @@ const IntroInfo = styled.div`
   height: 40px;
   display: flex;
   justify-content: space-between;
+  position: fixed;
 `;
 
 const LinkIntro = styled.a`
@@ -177,13 +254,7 @@ const UserLi = styled.li`
   padding-right: 30px;
 `;
 
-const HomeLi = styled.li`
-  padding-right: 30px;
-`;
-
 const OutLi = styled.li``;
-
-const IntroLi = styled.li``;
 
 const IntroSpan = styled.div`
   display: inline-block;
@@ -193,6 +264,14 @@ const IntroSpan = styled.div`
   text-align: center;
   border-radius: 15px;
   color: #fff;
+`;
+
+const HeaderBg = styled.div`
+  width: 100%;
+  height: auto;
+  background: #fff;
+  position: fixed;
+  margin-top: 40px;
 `;
 
 const HeaderNav = styled.div`
@@ -231,6 +310,7 @@ const CenterUl = styled.ul`
 `;
 
 const SectionMain = styled.div`
+  padding-top: 140px;
   background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
   text-align: center;
   width: auto;
@@ -284,10 +364,11 @@ const CheckButton = styled.button`
 const MainP = styled.p`
   color: #fff;
   margin-top: 15px;
-  margin-bottom: -25px;
+  margin-bottom: -30px;
 `;
 const TotalValue = styled.div`
-  margin-top: 15px;
+  margin-top: 35px;
+  margin-bottom: 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -312,19 +393,26 @@ const ValueLi = styled.li`
 const ValueLink = styled.a`
   font-size: 55px;
 `;
+const BannerBox1 = styled.div`
+  margin-top: 35px;
+  margin-right: 25px;
+`;
+const BannerBox2 = styled.div`
+  margin-top: 35px;
+  margin-left: 25px;
+`;
 const CheckForm = styled.div`
   display: flex;
+  justify-content: center;
 `;
 const Chet = styled.div`
-  width: 1350px;
+  width: auto;
   height: auto;
 `;
 const ChetBox = styled.div`
   width: 300px;
   border: 1px solid #eee;
   height: 400px;
-  margin: 0 auto;
-  margin-top: 5px;
   text-align: center;
   background: #eee;
   line-height: 400px;
@@ -333,13 +421,147 @@ const DetailBox = styled.div`
   width: 300px;
   border: 1px solid #eee;
   height: 400px;
-  margin: 0 auto;
   margin-top: 5px;
   text-align: center;
   background: #eee;
   line-height: 400px;
 `;
 const Regis = styled.div``;
+
+const RegisBtn = styled.div`
+  display: flex;
+  width: auto;
+  height: 40px;
+  margin-left: 10px;
+`;
+
+const RegBtn = styled.button`
+  background: rgb(255, 151, 0);
+  border: none;
+  width: 100%;
+  height: auto;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #fff;
+  letter-spacing: 1.3px;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+`;
+
+const RegBtnImg = styled.img`
+  vertical-align: sub;
+  margin-right: 3px;
+`;
+
+const ScheDuleUl = styled.ul`
+  display: flex;
+  border-top: 1px solid #eee;
+  width: auto;
+  height: auto;
+`;
+const ScheDuleLi = styled.li`
+  display: inline-block;
+  text-align: center;
+  width: 95px;
+  height: auto;
+  padding-bottom: 7px;
+  padding-top: 17px;
+`;
+
+const ScheDule = styled.div`
+  width: auto;
+  height: auto;
+  padding: 10px;
+`;
+
+const ScheInputUl = styled.ul`
+  display: flex;
+  width: auto;
+  height: auto;
+`;
+
+const ScheInputLi = styled.li`
+  display: inline-block;
+  width: 95px;
+  height: 30px;
+  font-size: 13px;
+  padding-top: 15px;
+  text-align: center;
+  color: #141b34;
+`;
+
+const ScheInput = styled.input`
+  width: 75px;
+  height: auto;
+  font-size: 15px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  display: flex;
+  margin-right: 5px;
+`;
+const BankBtn = styled.button``;
+const Account = styled.button``;
+const Phone = styled.button``;
+const NoteDiv = styled.div`
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  width: auto;
+  height: auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+`;
+const NoteInput = styled.input`
+  width: 375px;
+  font-size: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+`;
+const NoteBtnBox = styled.div``;
+const NoteBtn = styled.button`
+  width: 110px;
+  height: 35px;
+  background-color: #4dccc6;
+  background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
+  border: none;
+  color: #fff;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  outline: none;
+  margin: 3px;
+`;
+const RcBox = styled.div`
+  text-align: center;
+`;
+
+const RegisCheckButton = styled.button`
+  margin: 0 auto;
+  margin-top: 38px;
+  width: 150px;
+  height: 50px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  border: 0px;
+  letter-spacing: 1px;
+  font-size: 18px;
+  border-radius: 5px;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 172, 238, 1) 0%,
+    rgba(2, 126, 251, 1) 100%
+  );
+  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+`;
 const FooterForm = styled.div`
   align-items: center;
   margin-top: 30px;

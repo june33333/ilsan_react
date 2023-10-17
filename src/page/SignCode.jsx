@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const Header = () => {
@@ -17,23 +17,26 @@ const Header = () => {
 const Section = () => {
   return (
     <BoxSection>
-      <h3>가입코드는 텔레그램 : ROYALCLUB8 으로 문의주세요.</h3>
-      <div className="login_form">
-        <div className="input-enter">
-          <SignCodeInput
-            type="text"
-            minLength="5"
-            maxLength="13"
-            title="가입코드"
-            placeholder="가입코드"
-          />
-          <IdSpan>아이디가 올바르지 않습니다.</IdSpan>
+      <div className="SignCode">
+        <h3>가입코드는 텔레그램 : ROYALCLUB8 으로 문의주세요.</h3>
+        <div className="login_form">
+          <div className="input-enter">
+            <SignCodeInput
+              type="number"
+              minLength="5"
+              maxLength="13"
+              title="가입코드"
+              placeholder="가입코드"
+            />
+            <IdSpan>아이디가 올바르지 않습니다.</IdSpan>
+          </div>
         </div>
+        <BtnBox>
+          <ClearButton>확인</ClearButton>
+
+          <CancelButton>취소</CancelButton>
+        </BtnBox>
       </div>
-      <BtnBox>
-        <ClearButton>확인</ClearButton>
-        <CancelButton>취소</CancelButton>
-      </BtnBox>
       <div className="joinform">
         <div className="inputenter">
           <JoinInput
