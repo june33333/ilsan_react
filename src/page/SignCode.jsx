@@ -15,81 +15,103 @@ const Header = () => {
 };
 
 const Section = () => {
+  const [inputSignCode, setInputSignCode] = useState("");
+  const [isOk, setIsOk] = useState(false);
+
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    setInputSignCode(value);
+  };
+  const handleOkClick = () => {
+    if (inputSignCode === "3333") {
+      setIsOk(true);
+    } else {
+      setIsOk(false);
+      alert("가입코드가 틀립니다. 텔레그램으로 문의주세요.");
+    }
+  };
   return (
     <BoxSection>
-      <div className="SignCode">
-        <h3>가입코드는 텔레그램 : ROYALCLUB8 으로 문의주세요.</h3>
-        <div className="login_form">
-          <div className="input-enter">
-            <SignCodeInput
-              type="number"
-              minLength="5"
-              maxLength="13"
-              title="가입코드"
-              placeholder="가입코드"
-            />
-            <IdSpan>아이디가 올바르지 않습니다.</IdSpan>
-          </div>
-        </div>
-        <BtnBox>
-          <ClearButton>확인</ClearButton>
+      {!isOk && (
+        <>
+          <div className="SignCode">
+            <h3>가입코드는 텔레그램 : ROYALCLUB8 으로 문의주세요.</h3>
+            <div className="login_form">
+              <div className="input-enter">
+                <SignCodeInput
+                  type="number"
+                  minLength="5"
+                  maxLength="13"
+                  title="가입코드"
+                  placeholder="가입코드"
+                  onChange={handleInputChange}
+                />
+                <IdSpan>아이디가 올바르지 않습니다.</IdSpan>
+              </div>
+            </div>
+            <BtnBox>
+              <ClearButton onClick={handleOkClick}>확인</ClearButton>
 
-          <CancelButton>취소</CancelButton>
-        </BtnBox>
-      </div>
-      <div className="joinform">
-        <div className="inputenter">
-          <JoinInput
-            type="text"
-            minlength="5"
-            maxlength="13"
-            title="아이디"
-            placeholder="아이디를 입력해주세요"
-          ></JoinInput>
-          <AlertId>아이디를 입력해주세요.</AlertId>
+              <CancelButton>취소</CancelButton>
+            </BtnBox>
+          </div>
+        </>
+      )}
+      {isOk && (
+        <div className="joinform">
+          <div className="inputenter">
+            <JoinInput
+              type="text"
+              minlength="5"
+              maxlength="13"
+              title="아이디"
+              placeholder="아이디를 입력해주세요"
+            ></JoinInput>
+            <AlertId>아이디를 입력해주세요.</AlertId>
+          </div>
+          <div className="inputenter">
+            <JoinInput
+              type="password"
+              minlength="5"
+              maxlength="13"
+              title="패스워드"
+              placeholder="비밀번호를 입력해주세요"
+            ></JoinInput>
+          </div>
+          <AlertPw>비밀번호를 입력해주세요.</AlertPw>
+          <div className="inputenter">
+            <JoinInput
+              type="password"
+              minlength="5"
+              maxlength="13"
+              title="패스워드"
+              placeholder="비밀번호를 재 입력해주세요"
+            ></JoinInput>
+            <AlertRepw>비밀번호를 다시한번 입력해주세요.</AlertRepw>
+          </div>
+          <div className="inputenter">
+            <JoinInput
+              type="text"
+              minlength="5"
+              maxlength="13"
+              title="닉네임"
+              placeholder="닉네임을 입력해주세요"
+            ></JoinInput>
+            <AlertName>닉네임을 입력해주세요.</AlertName>
+          </div>
+          <div className="inputenter">
+            <JoinInput
+              type="telegram"
+              minlength="5"
+              maxlength="13"
+              title="패스워드"
+              placeholder="텔레그램 ID를 입력해주세요"
+            ></JoinInput>
+            <AlertTel>텔레그램 ID를 입력해주세요.</AlertTel>
+          </div>
+          <SubmitClear>회원가입</SubmitClear>
         </div>
-        <div className="inputenter">
-          <JoinInput
-            type="password"
-            minlength="5"
-            maxlength="13"
-            title="패스워드"
-            placeholder="비밀번호를 입력해주세요"
-          ></JoinInput>
-        </div>
-        <AlertPw>비밀번호를 입력해주세요.</AlertPw>
-        <div className="inputenter">
-          <JoinInput
-            type="password"
-            minlength="5"
-            maxlength="13"
-            title="패스워드"
-            placeholder="비밀번호를 재 입력해주세요"
-          ></JoinInput>
-          <AlertRepw>비밀번호를 다시한번 입력해주세요.</AlertRepw>
-        </div>
-        <div className="inputenter">
-          <JoinInput
-            type="text"
-            minlength="5"
-            maxlength="13"
-            title="닉네임"
-            placeholder="닉네임을 입력해주세요"
-          ></JoinInput>
-          <AlertName>닉네임을 입력해주세요.</AlertName>
-        </div>
-        <div className="inputenter">
-          <JoinInput
-            type="telegram"
-            minlength="5"
-            maxlength="13"
-            title="패스워드"
-            placeholder="텔레그램 ID를 입력해주세요"
-          ></JoinInput>
-          <AlertTel>텔레그램 ID를 입력해주세요.</AlertTel>
-        </div>
-        <SubmitClear>회원가입</SubmitClear>
-      </div>
+      )}
     </BoxSection>
   );
 };

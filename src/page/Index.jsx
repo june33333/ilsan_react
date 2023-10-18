@@ -52,7 +52,7 @@ const Header = () => {
             <Link to="#">조회/등록</Link>
           </li>
           <li>
-            <Link to="#">제휴업체</Link>
+            <Link to="Check">제휴업체</Link>
           </li>
           <li>
             <Link to="#">고객센터</Link>
@@ -115,13 +115,15 @@ const Total = () => {
 
 const Check = () => {
   return (
-    <CheckForm>
+    <CheckForm name="Check">
       <BannerBox1>
         <img src="img/banner01.png"></img>
       </BannerBox1>
       <Chet>
         <ChetBox>확성기 박스 / 실시간 채팅 박스</ChetBox>
-        <DetailBox>실시간 검색내용 박스 양** 010-****-3333</DetailBox>
+        <DetailBox>
+          양** 010-****-3333 <DetailTime>검색시간</DetailTime>
+        </DetailBox>
       </Chet>
       <Regis>
         <RegisBtn>
@@ -167,14 +169,12 @@ const Check = () => {
               <ScheInput></ScheInput>
             </ScheInputLi>
             <ScheInputLi>
-              <ScheInput></ScheInput>
+              <EmBtn>추가 +</EmBtn>
             </ScheInputLi>
             <ScheInputLi>
               <ScheInput></ScheInput>
             </ScheInputLi>
-            <ScheInputLi>
-              <ScheInput></ScheInput>
-            </ScheInputLi>
+            <ScheInputLi>히츠블루</ScheInputLi>
           </ScheInputUl>
         </ScheDule>
         <NoteDiv>
@@ -269,7 +269,7 @@ const IntroSpan = styled.div`
 const HeaderBg = styled.div`
   width: 100%;
   height: auto;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.6);
   position: fixed;
   margin-top: 40px;
 `;
@@ -418,13 +418,20 @@ const ChetBox = styled.div`
   line-height: 400px;
 `;
 const DetailBox = styled.div`
-  width: 300px;
+  width: 290px;
   border: 1px solid #eee;
-  height: 400px;
+  height: 370px;
   margin-top: 5px;
   text-align: center;
   background: #eee;
-  line-height: 400px;
+  display: flex;
+  align-items: end;
+  padding-bottom: 30px;
+  padding-left: 10px;
+`;
+
+const DetailTime = styled.span`
+  margin-left: 90px;
 `;
 const Regis = styled.div``;
 
@@ -464,7 +471,7 @@ const ScheDuleUl = styled.ul`
 const ScheDuleLi = styled.li`
   display: inline-block;
   text-align: center;
-  width: 95px;
+  width: 150px;
   height: auto;
   padding-bottom: 7px;
   padding-top: 17px;
@@ -480,20 +487,21 @@ const ScheInputUl = styled.ul`
   display: flex;
   width: auto;
   height: auto;
+  align-items: baseline;
 `;
 
 const ScheInputLi = styled.li`
   display: inline-block;
-  width: 95px;
+  width: 150px;
   height: 30px;
-  font-size: 13px;
+  font-size: 15px;
   padding-top: 15px;
   text-align: center;
   color: #141b34;
 `;
 
 const ScheInput = styled.input`
-  width: 75px;
+  width: 130px;
   height: auto;
   font-size: 15px;
   padding-top: 5px;
@@ -505,6 +513,11 @@ const ScheInput = styled.input`
 const BankBtn = styled.button``;
 const Account = styled.button``;
 const Phone = styled.button``;
+const EmBtn = styled.button`
+  font-size: 15px;
+  width: 70px;
+  height: 30px;
+`;
 const NoteDiv = styled.div`
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
@@ -516,7 +529,8 @@ const NoteDiv = styled.div`
   padding: 10px;
 `;
 const NoteInput = styled.input`
-  width: 375px;
+  width: 800px;
+  height: 30px;
   font-size: 15px;
   padding-top: 5px;
   padding-bottom: 5px;
