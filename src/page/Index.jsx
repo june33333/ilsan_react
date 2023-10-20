@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import "antd/dist/antd";
+import { InputNumber } from "antd";
 
 let note = 0;
 let point = 999999;
@@ -52,7 +54,7 @@ const Header = () => {
             <Link to="#">조회/등록</Link>
           </li>
           <li>
-            <Link to="Check">제휴업체</Link>
+            <Link to="#">제휴업체</Link>
           </li>
           <li>
             <Link to="#">고객센터</Link>
@@ -281,16 +283,29 @@ const HeaderNav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 640px) {
+    width: auto;
+    height: 50px;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
 `;
 
 const LinkLogo = styled.a`
   font-weight: bold;
   font-size: 35px;
   vertical-align: sub;
+  @media screen and (max-width: 640px) {
+    font-size: 0px;
+  }
 `;
 const LogoImg = styled.img`
   vertical-align: sub;
   margin-right: 10px;
+  @media screen and (max-width: 640px) {
+    width: 50px;
+    height: auto;
+  }
 `;
 const LogoUl = styled.ul`
   display: inline-flex;
@@ -307,6 +322,10 @@ const CenterUl = styled.ul`
   display: inline-flex;
   align-items: center;
   font-size: 20px;
+  @media screen and (max-width: 640px) {
+    width: 200px;
+    font-size: 15px;
+  }
 `;
 
 const SectionMain = styled.div`
@@ -315,16 +334,26 @@ const SectionMain = styled.div`
   text-align: center;
   width: auto;
   height: 700px;
+  @media screen and (max-width: 640px) {
+    padding-top: 50px;
+    height: 580px;
+  }
 `;
 const MainH1 = styled.h1`
   padding-top: 100px;
   color: #fff;
   font-size: 65px;
+  @media screen and (max-width: 640px) {
+    font-size: 38px;
+  }
 `;
 const MainH3 = styled.h3`
   padding-top: 10px;
   font-size: 20px;
   color: #fff;
+  @media screen and (max-width: 640px) {
+    font-size: 15px;
+  }
 `;
 
 const MainInput = styled.input`
@@ -341,6 +370,11 @@ const MainInput = styled.input`
   background-repeat: no-repeat;
   background-position-x: 455px;
   background-position-y: center;
+  @media screen and (max-width: 640px) {
+    width: 300px;
+    margin-top: 30px;
+    font-size: 13px;
+  }
 `;
 const CheckButton = styled.button`
   margin-top: 38px;
@@ -360,11 +394,18 @@ const CheckButton = styled.button`
   );
   box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
     7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+  @media screen and (max-width: 640px) {
+    width: 100px;
+    height: 38px;
+  }
 `;
 const MainP = styled.p`
   color: #fff;
   margin-top: 15px;
   margin-bottom: -30px;
+  @media screen and (max-width: 640px) {
+    margin-bottom: -20px;
+  }
 `;
 const TotalValue = styled.div`
   margin-top: 35px;
@@ -372,6 +413,9 @@ const TotalValue = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 640px) {
+    margin-bottom: 50px;
+  }
 `;
 
 const ValueUl = styled.ul`
@@ -386,12 +430,20 @@ const ValueLi = styled.li`
   width: 300px;
   height: 130px;
   text-align: center;
-  border: 3px solid skyblue;
+  border: 2px solid skyblue;
   border-radius: 17px;
+  @media screen and (max-width: 640px) {
+    width: auto;
+    height: 100px;
+    padding-top: 10px;
+  }
 `;
 
 const ValueLink = styled.a`
   font-size: 55px;
+  @media screen and (max-width: 640px) {
+    font-size: 25px;
+  }
 `;
 const BannerBox1 = styled.div`
   margin-top: 35px;
@@ -428,6 +480,8 @@ const DetailBox = styled.div`
   align-items: end;
   padding-bottom: 30px;
   padding-left: 10px;
+  @media screen and (max-width: 640px) {
+  }
 `;
 
 const DetailTime = styled.span`

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import "antd/dist/antd";
+import { InputNumber } from "antd";
 
 const Header = () => {
   return (
@@ -13,7 +15,6 @@ const Header = () => {
     </ContainerHeader>
   );
 };
-
 const Section = () => {
   const [inputSignCode, setInputSignCode] = useState("");
   const [isOk, setIsOk] = useState(false);
@@ -30,6 +31,7 @@ const Section = () => {
       alert("가입코드가 틀립니다. 텔레그램으로 문의주세요.");
     }
   };
+
   return (
     <BoxSection>
       {!isOk && (
@@ -38,13 +40,11 @@ const Section = () => {
             <h3>가입코드는 텔레그램 : ROYALCLUB8 으로 문의주세요.</h3>
             <div className="login_form">
               <div className="input-enter">
-                <SignCodeInput
-                  type="number"
+                <StyledInputNumber
                   minLength="5"
                   maxLength="13"
                   title="가입코드"
                   placeholder="가입코드"
-                  onChange={handleInputChange}
                 />
                 <IdSpan>아이디가 올바르지 않습니다.</IdSpan>
               </div>
@@ -162,19 +162,18 @@ const BoxSection = styled.section`
   padding: 30px;
 `;
 
-const SignCodeInput = styled.input`
-  height: 46px;
-  font-size: 15px;
-  padding-left: 15px;
-  width: 293px;
-  background: url(../img/code.svg) center right no-repeat;
-  background-size: 30px;
-  background-position-x: 260px;
+const StyledInputNumber = styled(InputNumber)`
   display: flex;
+  width: 293px;
+  height: 46px;
   text-align: center;
   margin: 0 auto;
-  margin-top: 15px;
-  margin-bottom: 38px;
+  background: url(../img/code.svg) center right no-repeat;
+  background-size: 30px;
+  background-position-x: 230px;
+  margin-top: 19px;
+  margin-bottom: 30px;
+  line-height: 46px;
 `;
 
 const IdSpan = styled.span`
