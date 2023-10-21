@@ -18,20 +18,55 @@ const Header = () => {
 const Section = () => {
   const [inputSignCode, setInputSignCode] = useState("");
   const [isOk, setIsOk] = useState(false);
-
+  const [AlertIdSpan, setAlertIdSpan] = useState("");
+  const [AlertPwSpan, setAlertPwSpan] = useState("");
+  const [AlertRePwSpan, setAlertRePwSpan] = useState("");
+  const [AlertNameSpan, setAlertNameSpan] = useState("");
+  const [AlertTelSpan, setAlertTelSpan] = useState("");
+  const [inputValueId, setInputValueId] = useState("");
+  const [inputValuePw, setInputValuePw] = useState("");
+  const [inputValueRePw, setInputValueRePw] = useState("");
+  const [inputValueName, setInputValueName] = useState("");
+  const [inputValueTel, setInputValueTel] = useState("");
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInputSignCode(value);
   };
   const handleOkClick = () => {
     if (inputSignCode === "3333") {
-      setIsOk(true);
-    } else {
       setIsOk(false);
       alert("가입코드가 틀립니다. 텔레그램으로 문의주세요.");
+    } else {
+      setIsOk(true);
     }
   };
-
+  const JoinSubmit = () => {
+    if (inputValueId === "") {
+      setAlertIdSpan("아이디를 입력해주세요.");
+    } else {
+      setAlertIdSpan("");
+    }
+    if (inputValuePw === "") {
+      setAlertPwSpan("비밀번호를 입력해주세요.");
+    } else {
+      setAlertPwSpan("");
+    }
+    if (inputValueRePw === "") {
+      setAlertRePwSpan("비밀번호를 재 입력해주세요.");
+    } else {
+      setAlertRePwSpan("");
+    }
+    if (inputValueName === "") {
+      setAlertNameSpan("닉네임을 입력해주세요.");
+    } else {
+      setAlertNameSpan("");
+    }
+    if (inputValueTel === "") {
+      setAlertTelSpan("텔레그램 ID를 입력해주세요.");
+    } else {
+      setAlertTelSpan("");
+    }
+  };
   return (
     <BoxSection>
       {!isOk && (
@@ -41,6 +76,7 @@ const Section = () => {
             <div className="login_form">
               <div className="input-enter">
                 <StyledInputNumber
+                  value={inputSignCode}
                   minLength="5"
                   maxLength="13"
                   title="가입코드"
@@ -66,8 +102,11 @@ const Section = () => {
               maxlength="13"
               title="아이디"
               placeholder="아이디를 입력해주세요"
+              type="text"
+              value={inputValueId}
+              onChange={(e) => setInputValueId(e.target.value)}
             ></JoinInput>
-            <AlertId>아이디를 입력해주세요.</AlertId>
+            <AlertId>{AlertIdSpan}</AlertId>
           </div>
           <div className="inputenter">
             <JoinInput
@@ -76,9 +115,12 @@ const Section = () => {
               maxlength="13"
               title="패스워드"
               placeholder="비밀번호를 입력해주세요"
+              type="text"
+              value={inputValuePw}
+              onChange={(e) => setInputValuePw(e.target.value)}
             ></JoinInput>
           </div>
-          <AlertPw>비밀번호를 입력해주세요.</AlertPw>
+          <AlertPw>{AlertPwSpan}</AlertPw>
           <div className="inputenter">
             <JoinInput
               type="password"
@@ -86,8 +128,11 @@ const Section = () => {
               maxlength="13"
               title="패스워드"
               placeholder="비밀번호를 재 입력해주세요"
+              type="text"
+              value={inputValueRePw}
+              onChange={(e) => setInputValueRePw(e.target.value)}
             ></JoinInput>
-            <AlertRepw>비밀번호를 다시한번 입력해주세요.</AlertRepw>
+            <AlertRepw>{AlertRePwSpan}</AlertRepw>
           </div>
           <div className="inputenter">
             <JoinInput
@@ -96,8 +141,11 @@ const Section = () => {
               maxlength="13"
               title="닉네임"
               placeholder="닉네임을 입력해주세요"
+              type="text"
+              value={inputValueName}
+              onChange={(e) => setInputValueName(e.target.value)}
             ></JoinInput>
-            <AlertName>닉네임을 입력해주세요.</AlertName>
+            <AlertName>{AlertNameSpan}</AlertName>
           </div>
           <div className="inputenter">
             <JoinInput
@@ -106,10 +154,13 @@ const Section = () => {
               maxlength="13"
               title="패스워드"
               placeholder="텔레그램 ID를 입력해주세요"
+              type="text"
+              value={inputValueTel}
+              onChange={(e) => setInputValueTel(e.target.value)}
             ></JoinInput>
-            <AlertTel>텔레그램 ID를 입력해주세요.</AlertTel>
+            <AlertTel>{AlertTelSpan}</AlertTel>
           </div>
-          <SubmitClear>회원가입</SubmitClear>
+          <SubmitClear onClick={JoinSubmit}>회원가입</SubmitClear>
         </div>
       )}
     </BoxSection>
