@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import "antd/dist/antd";
 import { InputNumber } from "antd";
+import MyComponent from "./gridtest";
 
 const Header = () => {
   return (
@@ -34,10 +35,10 @@ const Section = () => {
   };
   const handleOkClick = () => {
     if (inputSignCode === "3333") {
+      setIsOk(true);
+    } else {
       setIsOk(false);
       alert("가입코드가 틀립니다. 텔레그램으로 문의주세요.");
-    } else {
-      setIsOk(true);
     }
   };
   const JoinSubmit = () => {
@@ -75,7 +76,16 @@ const Section = () => {
             <h3>가입코드는 텔레그램 : ROYALCLUB8 으로 문의주세요.</h3>
             <div className="login_form">
               <div className="input-enter">
+                <MyComponent
+                  type="text"
+                  value={inputSignCode}
+                  minLength="5"
+                  maxLength="13"
+                  title="가입코드"
+                  placeholder="가입코드"
+                />
                 <StyledInputNumber
+                  type="text"
                   value={inputSignCode}
                   minLength="5"
                   maxLength="13"
@@ -225,6 +235,7 @@ const StyledInputNumber = styled(InputNumber)`
   margin-top: 19px;
   margin-bottom: 30px;
   line-height: 46px;
+  display: none;
 `;
 
 const IdSpan = styled.span`

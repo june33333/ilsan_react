@@ -5,6 +5,7 @@ import SignCode from "./page/SignCode";
 import Index from "./page/Index";
 import Affiliate from "./page/Affiliate";
 import Blog from "./page/Blog";
+import MyGridComponent from "./page/gridtest";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/index" element={<Index />} />
           <Route path="/affiliate" element={<Affiliate />} />
           <Route path="/blog" element={<Blog />}></Route>
+          <Route path="/gridtest" element={<MyGridComponent />} />
         </Routes>
       </Router>
     </>
