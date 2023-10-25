@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import "antd/dist/antd";
 import { InputNumber } from "antd";
-import MyComponent from "./gridtest";
+import InputBox from "./SignCodeNumber";
 
 const Header = () => {
   return (
@@ -32,6 +32,7 @@ const Section = () => {
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInputSignCode(value);
+    console.log(value);
   };
   const handleOkClick = () => {
     if (inputSignCode === "3333") {
@@ -76,15 +77,8 @@ const Section = () => {
             <h3>가입코드는 텔레그램 : ROYALCLUB8 으로 문의주세요.</h3>
             <div className="login_form">
               <div className="input-enter">
-                <MyComponent
-                  type="text"
-                  value={inputSignCode}
-                  minLength="5"
-                  maxLength="13"
-                  title="가입코드"
-                  placeholder="가입코드"
-                />
-                <StyledInputNumber
+                <InputBox
+                  onChange={handleInputChange}
                   type="text"
                   value={inputSignCode}
                   minLength="5"
@@ -335,4 +329,5 @@ const SubmitClear = styled.button`
 `;
 
 const Form = styled.div``;
+
 export default SignCode;

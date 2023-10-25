@@ -1,69 +1,57 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import "antd/dist/antd";
-import { InputNumber } from "antd";
+import React from "react";
+import {
+  Link,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+  scroller,
+} from "react-scroll";
 
-class MyComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputSignCode: "", // 입력값을 관리하는 상태
-    };
+class App extends React.Component {
+  scrollToTop() {
+    scroll.scrollToTop();
   }
 
-  handleInputChange = (e) => {
-    const inputValue = e.target.value;
-    // 입력값에서 숫자가 아닌 문자를 제거하여 상태를 업데이트합니다.
-    const sanitizedValue = inputValue.replace(/[^0-9]/g, "");
-    this.setState({ inputSignCode: sanitizedValue });
-  };
-
   render() {
-    const { inputSignCode } = this.state;
-
     return (
-      <input
-        style={{
-          display: "flex",
-          width: "293px",
-          height: "46px",
-          textAlign: "center",
-          margin: "0 auto",
-          background: "url(../img/code.svg) center right no-repeat",
-          backgroundSize: "30px",
-          backgroundPositionX: "230px",
-          marginTop: "19px",
-          marginBottom: "30px",
-          lineHeight: "46px",
-          borderRadius: "7px",
-        }}
-        type="text"
-        value={inputSignCode}
-        minLength="5"
-        maxLength="13"
-        title="가입코드"
-        placeholder="가입코드"
-        onChange={this.handleInputChange}
-      />
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link
+                activeClass="active"
+                to="section1"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                섹션 1
+              </Link>
+            </li>
+            <li>
+              <Link
+                activeClass="active"
+                to="section2"
+                spy={true}
+                smooth={true}
+                offset={-70}
+                duration={500}
+              >
+                섹션 2
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <Element name="section1" className="element">
+          섹션 1 내용
+        </Element>
+        <Element name="section2" className="element">
+          섹션 2 내용
+        </Element>
+      </div>
     );
   }
 }
-
-const InputComeCode = styled(InputNumber)``;
-/*
-const StyledInputNumber = styled(InputNumber)`
-  display: flex;
-  width: 293px;
-  height: 46px;
-  text-align: center;
-  margin: 0 auto;
-  background: url(../img/code.svg) center right no-repeat;
-  background-size: 30px;
-  background-position-x: 230px;
-  margin-top: 19px;
-  margin-bottom: 30px;
-  line-height: 46px;
-`;
-*/
-
-export default MyComponent;
+export default App;

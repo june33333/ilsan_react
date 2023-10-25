@@ -40,7 +40,7 @@ const Header = () => {
       <HeaderNav>
         <LogoUl>
           <li>
-            <LinkLogo to="#">
+            <LinkLogo to="../index">
               <LogoImg src="img/logo.png" alt="Logo" />
               FirstClub
             </LinkLogo>
@@ -199,7 +199,7 @@ const HeaderNav = styled.div`
   align-items: center;
 `;
 
-const LinkLogo = styled.a`
+const LinkLogo = styled(Link)`
   font-weight: bold;
   font-size: 35px;
   vertical-align: sub;

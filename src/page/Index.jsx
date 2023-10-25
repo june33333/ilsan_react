@@ -1,16 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 import styled from "styled-components";
 import "antd/dist/antd";
 import { InputNumber } from "antd";
+import Infomadal from "./Infomodal";
+import CusTomer from "./CusTomer";
+import AddInfo from "./AddInfo";
+import AddEm from "./AddEm";
+import ViewHistory from "./ViewHistory";
+import { HashLink } from "react-router-hash-link";
 
 let note = 0;
 let point = 999999;
 
-let total = "1,200,000";
+let total = 1200000;
 let today = Math.floor(Math.random() * 101) + 100;
 let todayser = Math.floor(Math.random() * 1000) + 1;
-let company = "1,250";
+let company = 1250;
 
 const Intro = () => {
   return (
@@ -23,10 +29,12 @@ const Intro = () => {
           </LinkIntro>
         </UserLi>
         <UserLi>
-          <LinkIntro to="#">{point} 포인트</LinkIntro>
+          <LinkIntro to="#">{point.toLocaleString()} 포인트</LinkIntro>
         </UserLi>
         <UserLi>
-          <LinkIntro to="#">회원정보</LinkIntro>
+          <LinkIntro to="Infomadal">
+            <Infomadal />
+          </LinkIntro>
         </UserLi>
         <OutLi>
           <LinkIntro to="#">로그아웃</LinkIntro>
@@ -42,7 +50,7 @@ const Header = () => {
       <HeaderNav>
         <LogoUl>
           <li>
-            <LinkLogo to="#">
+            <LinkLogo to="../index">
               <LogoImg src="img/logo.png" alt="Logo" />
               FirstClub
             </LinkLogo>
@@ -51,13 +59,17 @@ const Header = () => {
         <TelUl></TelUl>
         <CenterUl>
           <li>
-            <Link to="#">조회/등록</Link>
+            <HashLink to="#CheckForm" smooth>
+              조회/등록
+            </HashLink>
           </li>
           <li>
-            <Link to="#">제휴업체</Link>
+            <Link to="../affiliate">제휴업체</Link>
           </li>
           <li>
-            <Link to="#">고객센터</Link>
+            <Link to="#">
+              <CusTomer />
+            </Link>
           </li>
         </CenterUl>
       </HeaderNav>
@@ -87,25 +99,25 @@ const Total = () => {
     <TotalValue>
       <ValueUl>
         <ValueLi>
-          <ValueLink to="#">{total}</ValueLink>
+          <ValueLink to="#">{total.toLocaleString()}</ValueLink>
           <br></br>
           <br></br>
           <span>총 등록건수</span>
         </ValueLi>
         <ValueLi>
-          <ValueLink to="#">{today}</ValueLink>
+          <ValueLink to="#">{today.toLocaleString()}</ValueLink>
           <br></br>
           <br></br>
           <span>오늘등록 건수</span>
         </ValueLi>
         <ValueLi>
-          <ValueLink to="#">{todayser}</ValueLink>
+          <ValueLink to="#">{todayser.toLocaleString()}</ValueLink>
           <br></br>
           <br></br>
           <span>오늘검색 건수</span>
         </ValueLi>
         <ValueLi>
-          <ValueLink to="#">{company}</ValueLink>
+          <ValueLink to="#">{company.toLocaleString()}</ValueLink>
           <br></br>
           <br></br>
           <span>가입업체수</span>
@@ -117,7 +129,7 @@ const Total = () => {
 
 const Check = () => {
   return (
-    <CheckForm name="Check">
+    <CheckForm id="CheckForm">
       <BannerBox1>
         <img src="img/banner01.png"></img>
       </BannerBox1>
@@ -185,9 +197,11 @@ const Check = () => {
             placeholder="사고내용을 입력해주세요"
           ></NoteInput>
           <NoteBtnBox>
-            <NoteBtn>추가정보등록</NoteBtn>
-            <NoteBtn>비상연락망 조회</NoteBtn>
-            <NoteBtn>조회기록</NoteBtn>
+            <NoteBtn>
+              <AddInfo />
+            </NoteBtn>
+            <AddEm />
+            <ViewHistory />
           </NoteBtnBox>
         </NoteDiv>
         <RcBox>
@@ -291,7 +305,7 @@ const HeaderNav = styled.div`
   }
 `;
 
-const LinkLogo = styled.a`
+const LinkLogo = styled(Link)`
   font-weight: bold;
   font-size: 35px;
   vertical-align: sub;
