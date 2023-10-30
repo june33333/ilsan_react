@@ -3,7 +3,7 @@ import { Button, Modal, Input, Space } from "antd";
 import styled from "styled-components";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 
-const AddInfo: React.FC = () => {
+const AddEmRed: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [passwordVisible, setPasswordVisible] = React.useState(false);
 
@@ -18,7 +18,7 @@ const AddInfo: React.FC = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-
+  const AddEmRed: React.FC = () => <Input placeholder="Basic usage" />;
   return (
     <>
       <Button
@@ -29,21 +29,22 @@ const AddInfo: React.FC = () => {
         className="CusBtn"
         type="primary"
         onClick={showModal}
+        danger
       >
-        추가정보등록
+        추가 +
       </Button>
       <Modal
-        title="추가정보등록"
+        title="비상연락망 조회"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <Input style={{ margin: "3px 0" }} placeholder="은행명" />
-        <Input style={{ margin: "3px 0" }} placeholder="계좌번호" />
-        <Input style={{ margin: "3px 0" }} placeholder="전화번호" />
+        <Input style={{ margin: "3px 0" }} placeholder="이름" />
+        <Input style={{ margin: "3px 0" }} placeholder="연락처" />
+        <Input style={{ margin: "3px 0" }} placeholder="관계" />
       </Modal>
     </>
   );
 };
 
-export default AddInfo;
+export default AddEmRed;

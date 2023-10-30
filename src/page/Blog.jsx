@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const Blog = () => {
   const post = "강남 우동 맛집";
-  const [글제목, b] = useState([
+  const [글제목, 글제목변경] = useState([
     "남자코트 추천",
     "강남우동 맛집",
     "파이썬 독학",
@@ -24,6 +24,11 @@ const Blog = () => {
       setup("");
     }
   }
+  const 정렬가나다 = () => {
+    const 정렬된글제목 = [...글제목];
+    정렬된글제목.sort();
+    글제목변경(정렬된글제목);
+  };
   return (
     <>
       <H1 className="H1">하이</H1>
@@ -41,26 +46,45 @@ const Blog = () => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           ></input>
-          <button>가나다순정렬</button>
+          <button onClick={정렬가나다}>가나다순정렬</button>
           <button onClick={함수}>버튼</button>
           <p styled={{ padding: "10px" }}>2월 17일 발행</p>
+          <hr />
         </TitleList>
         <TitleList1>
           <h4 styled={{ padding: "10px" }}>{글제목[1]}</h4>
           <p styled={{ padding: "10px" }}>2월 17일 발행</p>
+          <hr />
         </TitleList1>
         <TitleList2>
           <h4>{글제목[2]}</h4>
           <p>2월 17일 발행</p>
+          <hr />
         </TitleList2>
-        <h4></h4>
+        <Modal />
       </Container>
     </>
   );
 };
 
+function Modal() {
+  return (
+    <div className="modal">
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  );
+}
+
 const Container = styled.div`
   text-align: center;
+  .modal {
+    margin-top: 20px;
+    padding: 20px;
+    background: #eee;
+    text-align: left;
+  }
 `;
 
 const BlackNav = styled.div`
@@ -74,17 +98,14 @@ const BlackNav = styled.div`
 const TitleList = styled.div`
   padding-left: 20px;
   text-align: left;
-  border-bottom: 1px solid gray;
 `;
 const TitleList1 = styled.div`
   padding-left: 20px;
   text-align: left;
-  border-bottom: 1px solid gray;
 `;
 const TitleList2 = styled.div`
   padding-left: 20px;
   text-align: left;
-  border-bottom: 1px solid gray;
 `;
 
 const H1 = styled.h1`

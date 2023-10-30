@@ -1,94 +1,36 @@
 import React, { useState } from "react";
-import { BrowserRouter, Link } from "react-router-dom";
 import styled from "styled-components";
 import "antd/dist/antd";
-import { InputNumber } from "antd";
-import Infomadal from "./Infomodal";
-import CusTomer from "./CusTomer";
+import { Input, Button } from "antd";
 import AddInfo from "./AddInfo";
 import AddEm from "./AddEm";
 import ViewHistory from "./ViewHistory";
-import { HashLink } from "react-router-hash-link";
-
-let note = 0;
-let point = 999999;
+import InTro from "./InTro";
+import Header from "./Header";
+import AddEmRed from "./AddEmRed";
 
 let total = 1200000;
 let today = Math.floor(Math.random() * 101) + 100;
 let todayser = Math.floor(Math.random() * 1000) + 1;
 let company = 1250;
 
-const Intro = () => {
-  return (
-    <IntroInfo>
-      <IntroUl></IntroUl>
-      <UserUl>
-        <UserLi>
-          <LinkIntro to="#">
-            <IntroSpan>{note}</IntroSpan> 코코몽이님
-          </LinkIntro>
-        </UserLi>
-        <UserLi>
-          <LinkIntro to="#">{point.toLocaleString()} 포인트</LinkIntro>
-        </UserLi>
-        <UserLi>
-          <LinkIntro to="Infomadal">
-            <Infomadal />
-          </LinkIntro>
-        </UserLi>
-        <OutLi>
-          <LinkIntro to="#">로그아웃</LinkIntro>
-        </OutLi>
-      </UserUl>
-    </IntroInfo>
-  );
-};
-
-const Header = () => {
-  return (
-    <HeaderBg>
-      <HeaderNav>
-        <LogoUl>
-          <li>
-            <LinkLogo to="../index">
-              <LogoImg src="img/logo.png" alt="Logo" />
-              FirstClub
-            </LinkLogo>
-          </li>
-        </LogoUl>
-        <TelUl></TelUl>
-        <CenterUl>
-          <li>
-            <HashLink to="#CheckForm" smooth>
-              조회/등록
-            </HashLink>
-          </li>
-          <li>
-            <Link to="../affiliate">제휴업체</Link>
-          </li>
-          <li>
-            <Link to="#">
-              <CusTomer />
-            </Link>
-          </li>
-        </CenterUl>
-      </HeaderNav>
-    </HeaderBg>
-  );
-};
-
 const Section = () => {
   return (
     <SectionMain>
       <MainH1>사고자 검색</MainH1>
       <MainH3>최상의 검색 조건을 제공하겠습니다</MainH3>
-      <MainInput type="text" placeholder="예) 이름 검색 = 필수입력"></MainInput>
-      <MainInput type="text" placeholder="예) 출생년도 2자리"></MainInput>
+      <Input
+        type="text"
+        placeholder="예) 이름 검색 = 필수입력"
+        className="input"
+      />
+      <Input type="text" placeholder="예) 출생년도 2자리" className="input" />
       <MainP>검색시 이름과 전화번호는 필수입력 입니다.</MainP>
-      <MainInput
+      <Input
         type="text"
         placeholder="예) 전화번호 01012345678 형식 = 필수입력"
-      ></MainInput>
+        className="input"
+      />
       <CheckButton>조회</CheckButton>
     </SectionMain>
   );
@@ -128,6 +70,50 @@ const Total = () => {
 };
 
 const Check = () => {
+  const [inputbank, setInputbank] = useState([""]);
+  const [inputaccount, setInputaccount] = useState([""]);
+  const [inputphone, setInputphone] = useState([""]);
+  const AddInputBank = () => {
+    if (inputbank.length < 5) {
+      const newInputsBank = [...inputbank, ""];
+      setInputbank(newInputsBank);
+    }
+  };
+  const AddInputAccount = () => {
+    if (inputaccount.length < 5) {
+      const newInputsAccount = [...inputaccount, ""];
+      setInputaccount(newInputsAccount);
+    }
+  };
+  const AddInputPhone = () => {
+    if (inputphone.length < 5) {
+      const newInputPhone = [...inputphone, ""];
+      setInputphone(newInputPhone);
+    }
+  };
+
+  const RemoveInputBank = (AddBank) => {
+    if (inputbank.length > 1) {
+      const newInputsBank = [...inputbank];
+      newInputsBank.splice(AddBank, 1);
+      setInputbank(newInputsBank);
+    }
+  };
+  const RemoveInputAccount = (AddAccount) => {
+    if (inputaccount.length > 1) {
+      const newInputsaccount = [...inputaccount];
+      newInputsaccount.splice(AddAccount, 1);
+      setInputaccount(newInputsaccount);
+    }
+  };
+  const RemoveInputPhone = (AddPhone) => {
+    if (inputphone.length > 1) {
+      const newInputsphone = [...inputphone];
+      newInputsphone.splice(AddPhone, 1);
+      setInputphone(newInputsphone);
+    }
+  };
+
   return (
     <CheckForm id="CheckForm">
       <BannerBox1>
@@ -150,13 +136,22 @@ const Check = () => {
             <ScheDuleLi>이름</ScheDuleLi>
             <ScheDuleLi>생년월일</ScheDuleLi>
             <ScheDuleLi>
-              은행명 <BankBtn>+</BankBtn>
+              은행명 <Button onClick={AddInputBank}>+</Button>
+              {inputbank.length > 1 && (
+                <Button onClick={() => RemoveInputBank(0)}>-</Button>
+              )}
             </ScheDuleLi>
             <ScheDuleLi>
-              계좌번호 <Account>+</Account>
+              계좌번호 <Button onClick={AddInputAccount}>+</Button>
+              {inputaccount.length > 1 && (
+                <Button onClick={() => RemoveInputAccount(0)}>-</Button>
+              )}
             </ScheDuleLi>
             <ScheDuleLi>
-              전화번호 <Phone>+</Phone>
+              전화번호 <Button onClick={AddInputPhone}>+</Button>
+              {inputphone.length > 1 && (
+                <Button onClick={() => RemoveInputPhone(Index)}>-</Button>
+              )}
             </ScheDuleLi>
             <ScheDuleLi>거주지역</ScheDuleLi>
             <ScheDuleLi>비상연락망</ScheDuleLi>
@@ -165,41 +160,46 @@ const Check = () => {
           </ScheDuleUl>
           <ScheInputUl>
             <ScheInputLi>
-              <ScheInput></ScheInput>
+              <Input className="input" />
             </ScheInputLi>
             <ScheInputLi>
-              <ScheInput></ScheInput>
+              <Input className="input" />
             </ScheInputLi>
             <ScheInputLi>
-              <ScheInput></ScheInput>
+              {inputbank.map((input, AddBank) => (
+                <Input className="bankinput" key={AddBank} />
+              ))}
             </ScheInputLi>
             <ScheInputLi>
-              <ScheInput></ScheInput>
+              {inputaccount.map((input, AddAccount) => (
+                <Input className="accountinput" key={AddAccount} />
+              ))}
             </ScheInputLi>
             <ScheInputLi>
-              <ScheInput></ScheInput>
+              {inputphone.map((input, AddPhone) => (
+                <Input className="phoneinput" key={AddPhone} />
+              ))}
             </ScheInputLi>
             <ScheInputLi>
-              <ScheInput></ScheInput>
+              <Input className="input" />
             </ScheInputLi>
             <ScheInputLi>
-              <EmBtn>추가 +</EmBtn>
+              <AddEmRed />
             </ScheInputLi>
             <ScheInputLi>
-              <ScheInput></ScheInput>
+              <Input className="input" />
             </ScheInputLi>
             <ScheInputLi>히츠블루</ScheInputLi>
           </ScheInputUl>
         </ScheDule>
         <NoteDiv>
-          <NoteInput
+          <Input
             type="text"
             placeholder="사고내용을 입력해주세요"
-          ></NoteInput>
+            className="input"
+          />
           <NoteBtnBox>
-            <NoteBtn>
-              <AddInfo />
-            </NoteBtn>
+            <AddInfo className="button" />
             <AddEm />
             <ViewHistory />
           </NoteBtnBox>
@@ -226,7 +226,7 @@ const Footer = () => {
 const Index = () => {
   return (
     <>
-      <Intro />
+      <InTro />
       <Header />
       <Section />
       <Total />
@@ -236,113 +236,27 @@ const Index = () => {
   );
 };
 
-const IntroInfo = styled.div`
-  width: 100%;
-  background: #23303d;
-  height: 40px;
-  display: flex;
-  justify-content: space-between;
-  position: fixed;
-`;
-
-const LinkIntro = styled.a`
-  color: #fff;
-  font-size: 13px;
-`;
-
-const IntroUl = styled.ul`
-  display: inline-flex;
-  align-items: center;
-  padding-left: 5%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-`;
-
-const UserUl = styled.ul`
-  display: inline-flex;
-  align-items: center;
-  padding-right: 5%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-`;
-
-const UserLi = styled.li`
-  padding-right: 30px;
-`;
-
-const OutLi = styled.li``;
-
-const IntroSpan = styled.div`
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  background: red;
-  text-align: center;
-  border-radius: 15px;
-  color: #fff;
-`;
-
-const HeaderBg = styled.div`
-  width: 100%;
-  height: auto;
-  background: rgba(255, 255, 255, 0.6);
-  position: fixed;
-  margin-top: 40px;
-`;
-
-const HeaderNav = styled.div`
-  width: 1350px;
-  height: 100px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  @media screen and (max-width: 640px) {
-    width: auto;
-    height: 50px;
-    padding-left: 3%;
-    padding-right: 3%;
-  }
-`;
-
-const LinkLogo = styled(Link)`
-  font-weight: bold;
-  font-size: 35px;
-  vertical-align: sub;
-  @media screen and (max-width: 640px) {
-    font-size: 0px;
-  }
-`;
-const LogoImg = styled.img`
-  vertical-align: sub;
-  margin-right: 10px;
-  @media screen and (max-width: 640px) {
-    width: 50px;
-    height: auto;
-  }
-`;
-const LogoUl = styled.ul`
-  display: inline-flex;
-  align-items: center;
-`;
-
-const TelUl = styled.ul`
-  display: inline-flex;
-  align-items: center;
-`;
-const CenterUl = styled.ul`
-  width: 300px;
-  justify-content: space-between;
-  display: inline-flex;
-  align-items: center;
-  font-size: 20px;
-  @media screen and (max-width: 640px) {
-    width: 200px;
-    font-size: 15px;
-  }
-`;
-
 const SectionMain = styled.div`
+  .input {
+    width: 700px;
+    height: 60px;
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 7px;
+    font-size: 18px;
+    border-color: #eee;
+    background-image: url(img/search.png);
+    background-repeat: no-repeat;
+    background-position-x: 650px;
+    background-position-y: center;
+    @media screen and (max-width: 640px) {
+      width: 300px;
+      margin-top: 30px;
+      font-size: 13px;
+    }
+  }
   padding-top: 140px;
   background-image: linear-gradient(to top, #d9afd9 0%, #97d9e1 100%);
   text-align: center;
@@ -370,26 +284,6 @@ const MainH3 = styled.h3`
   }
 `;
 
-const MainInput = styled.input`
-  width: 500px;
-  height: 50px;
-  display: flex;
-  margin: 0 auto;
-  text-align: center;
-  margin-top: 50px;
-  border-radius: 7px;
-  font-size: 18px;
-  border-color: #eee;
-  background-image: url(img/search.png);
-  background-repeat: no-repeat;
-  background-position-x: 455px;
-  background-position-y: center;
-  @media screen and (max-width: 640px) {
-    width: 300px;
-    margin-top: 30px;
-    font-size: 13px;
-  }
-`;
 const CheckButton = styled.button`
   margin-top: 38px;
   width: 150px;
@@ -423,7 +317,7 @@ const MainP = styled.p`
 `;
 const TotalValue = styled.div`
   margin-top: 35px;
-  margin-bottom: 100px;
+  margin-bottom: -50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -468,6 +362,7 @@ const BannerBox2 = styled.div`
   margin-left: 25px;
 `;
 const CheckForm = styled.div`
+  padding-top: 150px;
   display: flex;
   justify-content: center;
 `;
@@ -537,6 +432,14 @@ const ScheDuleUl = styled.ul`
   height: auto;
 `;
 const ScheDuleLi = styled.li`
+  Button {
+    padding: 0px 0px;
+    height: 0px;
+    width: 25px;
+    height: 25px;
+    vertical-align: top;
+    margin-top: -3px;
+  }
   display: inline-block;
   text-align: center;
   width: 150px;
@@ -559,34 +462,67 @@ const ScheInputUl = styled.ul`
 `;
 
 const ScheInputLi = styled.li`
+  .input {
+    width: 145px;
+    height: auto;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    display: flex;
+    margin-right: 5px;
+  }
+  .bankinput {
+    width: 145px;
+    height: auto;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    display: flex;
+    margin-right: 5px;
+    margin-top: 10px;
+  }
+  .accountinput {
+    width: 145px;
+    height: auto;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    display: flex;
+    margin-right: 5px;
+    margin-top: 10px;
+  }
+  .phoneinput {
+    width: 145px;
+    height: auto;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    display: flex;
+    margin-right: 5px;
+    margin-top: 10px;
+  }
   display: inline-block;
   width: 150px;
-  height: 30px;
+  height: auto;
   font-size: 15px;
-  padding-top: 15px;
+  padding-top: 5px;
   text-align: center;
   color: #141b34;
 `;
 
-const ScheInput = styled.input`
-  width: 130px;
-  height: auto;
-  font-size: 15px;
-  padding-top: 5px;
-  padding-left: 10px;
-  padding-bottom: 5px;
-  display: flex;
-  margin-right: 5px;
-`;
-const BankBtn = styled.button``;
-const Account = styled.button``;
-const Phone = styled.button``;
-const EmBtn = styled.button`
-  font-size: 15px;
-  width: 70px;
-  height: 30px;
-`;
 const NoteDiv = styled.div`
+  .input {
+    width: 830px;
+    height: 50px;
+    font-size: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+  }
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   display: flex;
@@ -596,29 +532,10 @@ const NoteDiv = styled.div`
   align-items: center;
   padding: 10px;
 `;
-const NoteInput = styled.input`
-  width: 800px;
-  height: 30px;
-  font-size: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-`;
-const NoteBtnBox = styled.div``;
-const NoteBtn = styled.button`
-  width: 110px;
-  height: 35px;
-  background-color: #4dccc6;
-  background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
-  border: none;
-  color: #fff;
-  font-size: 15px;
-  border-radius: 5px;
-  cursor: pointer;
-  box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
-    7px 7px 20px 0px rgba(0, 0, 0, 0.1), 4px 4px 5px 0px rgba(0, 0, 0, 0.1);
-  outline: none;
-  margin: 3px;
+const NoteBtnBox = styled.div`
+  button {
+    margin: 3px;
+  }
 `;
 const RcBox = styled.div`
   text-align: center;

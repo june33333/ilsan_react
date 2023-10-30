@@ -12,6 +12,7 @@ import Affiliate from "./page/Affiliate";
 import Blog from "./page/Blog";
 import MyGridComponent from "./page/SignCodeNumber";
 import GirdTest from "./page/GridTest";
+import Message from "./page/Message";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/signcodenumber" element={<MyGridComponent />} />
           <Route path="/gridtest" element={<GirdTest />} />
+          <Route path="/Message" element={<Message />} />
         </Routes>
       </BrowserRouter>
     </>

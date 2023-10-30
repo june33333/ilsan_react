@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import "antd/dist/antd";
-import { InputNumber } from "antd";
+import { InputNumber, Input, Button } from "antd";
 import InputBox from "./SignCodeNumber";
+import { Link } from "react-router-dom";
+import Message from "./Message";
 
 const Header = () => {
   return (
     <ContainerHeader>
       <h1>
-        <a href="/">
+        <a href="../Signcode">
           <LogoImg src="img/logo.png" alt="Logo" />
           FirstClub
         </a>
@@ -35,7 +37,7 @@ const Section = () => {
     console.log(value);
   };
   const handleOkClick = () => {
-    if (inputSignCode === "3333") {
+    if (inputSignCode === "") {
       setIsOk(true);
     } else {
       setIsOk(false);
@@ -69,6 +71,7 @@ const Section = () => {
       setAlertTelSpan("");
     }
   };
+
   return (
     <BoxSection>
       {!isOk && (
@@ -91,8 +94,11 @@ const Section = () => {
             </div>
             <BtnBox>
               <ClearButton onClick={handleOkClick}>확인</ClearButton>
-
-              <CancelButton>취소</CancelButton>
+              <CancelButton Link to="../Login">
+                <Link to="../Login" className="Link">
+                  취소
+                </Link>
+              </CancelButton>
             </BtnBox>
           </div>
         </>
@@ -100,7 +106,7 @@ const Section = () => {
       {isOk && (
         <div className="joinform">
           <div className="inputenter">
-            <JoinInput
+            <Input
               type="text"
               minlength="5"
               maxlength="13"
@@ -109,11 +115,11 @@ const Section = () => {
               type="text"
               value={inputValueId}
               onChange={(e) => setInputValueId(e.target.value)}
-            ></JoinInput>
+            />
             <AlertId>{AlertIdSpan}</AlertId>
           </div>
           <div className="inputenter">
-            <JoinInput
+            <Input
               type="password"
               minlength="5"
               maxlength="13"
@@ -122,11 +128,11 @@ const Section = () => {
               type="text"
               value={inputValuePw}
               onChange={(e) => setInputValuePw(e.target.value)}
-            ></JoinInput>
+            />
           </div>
           <AlertPw>{AlertPwSpan}</AlertPw>
           <div className="inputenter">
-            <JoinInput
+            <Input
               type="password"
               minlength="5"
               maxlength="13"
@@ -135,24 +141,32 @@ const Section = () => {
               type="text"
               value={inputValueRePw}
               onChange={(e) => setInputValueRePw(e.target.value)}
-            ></JoinInput>
+            />
             <AlertRepw>{AlertRePwSpan}</AlertRepw>
           </div>
           <div className="inputenter">
-            <JoinInput
-              type="text"
-              minlength="5"
-              maxlength="13"
-              title="닉네임"
-              placeholder="닉네임을 입력해주세요"
-              type="text"
-              value={inputValueName}
-              onChange={(e) => setInputValueName(e.target.value)}
-            ></JoinInput>
+            <ul>
+              <li>
+                <Input
+                  className="inputname"
+                  type="text"
+                  minlength="5"
+                  maxlength="13"
+                  title="닉네임"
+                  placeholder="닉네임을 입력해주세요"
+                  type="text"
+                  value={inputValueName}
+                  onChange={(e) => setInputValueName(e.target.value)}
+                />
+              </li>
+              <li>
+                <Message />
+              </li>
+            </ul>
             <AlertName>{AlertNameSpan}</AlertName>
           </div>
           <div className="inputenter">
-            <JoinInput
+            <Input
               type="telegram"
               minlength="5"
               maxlength="13"
@@ -161,7 +175,7 @@ const Section = () => {
               type="text"
               value={inputValueTel}
               onChange={(e) => setInputValueTel(e.target.value)}
-            ></JoinInput>
+            />
             <AlertTel>{AlertTelSpan}</AlertTel>
           </div>
           <SubmitClear onClick={JoinSubmit}>회원가입</SubmitClear>
@@ -171,19 +185,12 @@ const Section = () => {
   );
 };
 
-const LoginForm = () => {
-  <Form>
-    <h1>First Clubdddddddd</h1>
-  </Form>;
-};
-
 const SignCode = () => {
   return (
     <>
       <Container>
         <Header />
         <Section />
-        <LoginForm />
       </Container>
     </>
   );
@@ -213,23 +220,28 @@ const ContainerHeader = styled.header`
 `;
 
 const BoxSection = styled.section`
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  input {
+    display: flex;
+    margin: 0 auto;
+    font-size: 15px;
+    padding-left: 15px;
+    width: 310px;
+    height: 50px;
+  }
+  .inputname {
+    display: flex;
+    width: 215px;
+  }
+  .check {
+    height: 50px;
+  }
   border: 1px solid #eee;
   padding: 30px;
-`;
-
-const StyledInputNumber = styled(InputNumber)`
-  display: flex;
-  width: 293px;
-  height: 46px;
-  text-align: center;
-  margin: 0 auto;
-  background: url(../img/code.svg) center right no-repeat;
-  background-size: 30px;
-  background-position-x: 230px;
-  margin-top: 19px;
-  margin-bottom: 30px;
-  line-height: 46px;
-  display: none;
 `;
 
 const IdSpan = styled.span`
@@ -257,6 +269,9 @@ const ClearButton = styled.button`
 `;
 
 const CancelButton = styled.button`
+  .Link {
+    color: #fff;
+  }
   width: 150px;
   height: 50px;
   text-align: center;
@@ -327,7 +342,5 @@ const SubmitClear = styled.button`
   border: 0px;
   letter-spacing: 1px;
 `;
-
-const Form = styled.div``;
 
 export default SignCode;

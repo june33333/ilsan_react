@@ -18,7 +18,7 @@ const ViewHistory: React.FC = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const AddEm: React.FC = () => <Input placeholder="Basic usage" />;
+  /* const AddEm: React.FC = () => <Input placeholder="Basic usage" />; */
   return (
     <>
       <Button

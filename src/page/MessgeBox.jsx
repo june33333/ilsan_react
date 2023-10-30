@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Button, Modal, Input, Space } from "antd";
 import styled from "styled-components";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import Avatar from "antd";
 
-const CusTomer: React.FC = () => {
+const MessgeBox: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [passwordVisible, setPasswordVisible] = React.useState(false);
 
@@ -24,8 +25,8 @@ const CusTomer: React.FC = () => {
       <Button
         style={{
           background: "none",
-          color: "#000",
-          fontSize: "20px",
+          color: "#fff",
+          fontSize: "15px",
           boxShadow: "none",
           height: "0px",
           padding: "0px",
@@ -36,15 +37,34 @@ const CusTomer: React.FC = () => {
         type="primary"
         onClick={showModal}
       >
-        고객센터
+        코코몽이님
       </Button>
       <Modal
-        title="관리자 텔레그램"
+        title="쪽지함"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
       >
-        <p>관리자 텔레그램 : FristClub@으로 연락주세요.</p>
+        <p>
+          <span>23-10-27</span>관리자 메세지 : 안녕하세요 FristClub입니다.
+        </p>
+        <hr />
+        <p>
+          <span>23-10-27</span>관리자 메세지 : 안녕하세요 FristClub입니다.{" "}
+        </p>
+        <hr />
+        <p>
+          <span>23-10-27</span>관리자 메세지 : 안녕하세요 FristClub입니다.{" "}
+        </p>
+        <hr />
+        <p>
+          <span>23-10-27</span>관리자 메세지 : 안녕하세요 FristClub입니다.{" "}
+        </p>
+        <hr />
+        <p>
+          <span>23-10-27</span>관리자 메세지 : 안녕하세요 FristClub입니다.{" "}
+        </p>
+        <hr />
       </Modal>
     </LineSpan>
   );
@@ -54,5 +74,6 @@ const LineSpan = styled.div`
     overflow: hidden;
     vertical-align: sub;
   }
+  display: flex;
 `;
-export default CusTomer;
+export default MessgeBox;

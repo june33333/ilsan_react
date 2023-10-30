@@ -1,11 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import "antd/dist/antd";
+import { Input } from "antd";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <ContainerHeader>
       <h1>
-        <a href="/">
+        <a href="../Login">
           <LogoImg src="img/logo.png" alt="Logo" />
           FirstClub
         </a>
@@ -19,30 +22,44 @@ const Section = () => {
     <BoxSection>
       <div className="login_form">
         <div className="input-enter">
-          <LoginidInput
-            type="text"
-            minLength="5"
-            maxLength="13"
-            title="아이디"
-            placeholder="User ID"
-          />
+          <LoginIdBox>
+            <Input
+              className="input"
+              type="text"
+              minLength="5"
+              maxLength="13"
+              title="아이디"
+              placeholder="User ID"
+            />
+          </LoginIdBox>
           <IdSpan>아이디가 올바르지 않습니다.</IdSpan>
         </div>
         <div className="input-enter">
-          <LoginpwInput
-            type="password"
-            minLength="5"
-            maxLength="13"
-            title="패스워드"
-            placeholder="Password"
-          />
+          <LoginPwBox>
+            <Input
+              className="input"
+              type="password"
+              minLength="5"
+              maxLength="13"
+              title="패스워드"
+              placeholder="Password"
+            />
+          </LoginPwBox>
           <PwSpan>비밀번호가 올바르지 않습니다.</PwSpan>
           <InfoSpan>정보가 올바르지 않습니다.</InfoSpan>
         </div>
       </div>
       <BtnBox>
-        <SubmitButton>로그인</SubmitButton>
-        <SignupButton>회원가입</SignupButton>
+        <SubmitButton>
+          <Link to="../index" className="Link">
+            로그인
+          </Link>
+        </SubmitButton>
+        <SignupButton>
+          <Link to="../SignCode" className="Link">
+            회원가입
+          </Link>
+        </SignupButton>
       </BtnBox>
       <TelBox>
         <ImgTel src="img/tel.png" alt="텔레그램 아이콘"></ImgTel>
@@ -90,26 +107,31 @@ const BoxSection = styled.section`
   padding: 30px;
 `;
 
-const LoginidInput = styled.input`
-  height: 46px;
-  margin-bottom: 28px;
-  font-size: 15px;
-  padding-left: 15px;
-  width: 293px;
-  background: url("../img/id.svg") center right no-repeat;
-  background-size: 30px;
-  background-position-x: 260px;
+const LoginIdBox = styled.div`
+  .input {
+    width: 315px !important;
+    height: 50px;
+    margin-bottom: 28px;
+    font-size: 15px;
+    padding-left: 15px;
+    width: 293px;
+    background: url("../img/id.svg") center right no-repeat;
+    background-size: 30px;
+    background-position-x: 260px;
+  }
 `;
-
-const LoginpwInput = styled.input`
-  height: 46px;
-  margin-bottom: 28px;
-  font-size: 15px;
-  padding-left: 15px;
-  width: 293px;
-  background: url("../img/lock.svg") center right no-repeat;
-  background-size: 30px;
-  background-position-x: 260px;
+const LoginPwBox = styled.div`
+  .input {
+    width: 315px !important;
+    height: 50px;
+    margin-bottom: 28px;
+    font-size: 15px;
+    padding-left: 15px;
+    width: 293px;
+    background: url("../img/lock.svg") center right no-repeat;
+    background-size: 30px;
+    background-position-x: 260px;
+  }
 `;
 
 const IdSpan = styled.span`
@@ -125,6 +147,9 @@ const InfoSpan = styled.span`
 `;
 
 const SubmitButton = styled.button`
+  .Link {
+    color: #fff;
+  }
   width: 150px;
   height: 50px;
   text-align: center;
@@ -144,6 +169,9 @@ const SubmitButton = styled.button`
 `;
 
 const SignupButton = styled.button`
+  .Link {
+    color: #fff;
+  }
   width: 150px;
   height: 50px;
   text-align: center;
