@@ -112,7 +112,6 @@ const Section = () => {
               maxlength="13"
               title="아이디"
               placeholder="아이디를 입력해주세요"
-              type="text"
               value={inputValueId}
               onChange={(e) => setInputValueId(e.target.value)}
             />
@@ -125,7 +124,6 @@ const Section = () => {
               maxlength="13"
               title="패스워드"
               placeholder="비밀번호를 입력해주세요"
-              type="text"
               value={inputValuePw}
               onChange={(e) => setInputValuePw(e.target.value)}
             />
@@ -138,7 +136,6 @@ const Section = () => {
               maxlength="13"
               title="패스워드"
               placeholder="비밀번호를 재 입력해주세요"
-              type="text"
               value={inputValueRePw}
               onChange={(e) => setInputValueRePw(e.target.value)}
             />
@@ -154,7 +151,6 @@ const Section = () => {
                   maxlength="13"
                   title="닉네임"
                   placeholder="닉네임을 입력해주세요"
-                  type="text"
                   value={inputValueName}
                   onChange={(e) => setInputValueName(e.target.value)}
                 />
@@ -172,7 +168,6 @@ const Section = () => {
               maxlength="13"
               title="패스워드"
               placeholder="텔레그램 ID를 입력해주세요"
-              type="text"
               value={inputValueTel}
               onChange={(e) => setInputValueTel(e.target.value)}
             />

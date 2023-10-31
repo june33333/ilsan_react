@@ -8,6 +8,7 @@ import ViewHistory from "./ViewHistory";
 import InTro from "./InTro";
 import Header from "./Header";
 import AddEmRed from "./AddEmRed";
+import ReqMessage from "./ReqMessage";
 
 let total = 1200000;
 let today = Math.floor(Math.random() * 101) + 100;
@@ -73,6 +74,23 @@ const Check = () => {
   const [inputbank, setInputbank] = useState([""]);
   const [inputaccount, setInputaccount] = useState([""]);
   const [inputphone, setInputphone] = useState([""]);
+  const [ReqName, setReqName] = useState("");
+  const [ReqBirth, setReqBirth] = useState("");
+  const [ReqPhone, setReqPhone] = useState("");
+  // const [inputReqName, setInputReqName] = useState("");
+  // const [inputReqBirth, setInputBirth] = useState("");
+  // const [inputReqPhone, setInputPhone] = useState("");
+  // const [inputReqSubmit, setInputReqSubmit] = useState("");
+
+  // const handleReqNameChange = (e) => {
+  //   setReqName(e.target.value);
+  // };
+  // const handleReqBirthChange = (e) => {
+  //   setReqBirth(e.target.value);
+  // };
+  // const handleReqPhoneChange = (e) => {
+  //   setReqPhone(e.target.value);
+  // };
   const AddInputBank = () => {
     if (inputbank.length < 5) {
       const newInputsBank = [...inputbank, ""];
@@ -113,7 +131,22 @@ const Check = () => {
       setInputphone(newInputsphone);
     }
   };
+  // const isRequiredInputsEmpty = () => {
+  //   return ReqName.trim() === "" || ReqBirth.trim() === "";
+  // };
+  const ReqSubmit = () => {
+    if (
+      ReqName.trim() === "" ||
+      ReqBirth.trim() === "" ||
+      ReqPhone.trim() === ""
+    ) {
+      alert("필수 입력이 입력되지 않았습니다.");
+    } else {
+      alert("필수 입력이 되었습니다.");
+    }
 
+    // 필수 입력이 제대로 입력되었을 때 다음 로직을 실행
+  };
   return (
     <CheckForm id="CheckForm">
       <BannerBox1>
@@ -160,10 +193,20 @@ const Check = () => {
           </ScheDuleUl>
           <ScheInputUl>
             <ScheInputLi>
-              <Input className="input" />
+              <Input
+                className="input"
+                placeholder="필수입력"
+                value={ReqName}
+                onChange={(e) => setReqName(e.target.value)}
+              />
             </ScheInputLi>
             <ScheInputLi>
-              <Input className="input" />
+              <Input
+                className="input"
+                placeholder="필수입력"
+                value={ReqBirth}
+                onChange={(e) => setReqBirth(e.target.value)}
+              />
             </ScheInputLi>
             <ScheInputLi>
               {inputbank.map((input, AddBank) => (
@@ -177,7 +220,13 @@ const Check = () => {
             </ScheInputLi>
             <ScheInputLi>
               {inputphone.map((input, AddPhone) => (
-                <Input className="phoneinput" key={AddPhone} />
+                <Input
+                  className="phoneinput"
+                  key={AddPhone}
+                  placeholder="필수입력"
+                  value={ReqPhone}
+                  onChange={(e) => setReqPhone(e.target.value)}
+                />
               ))}
             </ScheInputLi>
             <ScheInputLi>
@@ -205,7 +254,8 @@ const Check = () => {
           </NoteBtnBox>
         </NoteDiv>
         <RcBox>
-          <RegisCheckButton>등록</RegisCheckButton>
+          {/* <ReqMessage onClick={ReqSubmit} /> */}
+          <RegisCheckButton onClick={ReqSubmit}>등록</RegisCheckButton>
         </RcBox>
       </Regis>
       <BannerBox2>
