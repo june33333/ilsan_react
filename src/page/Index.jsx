@@ -77,7 +77,31 @@ const Check = () => {
   const [ReqName, setReqName] = useState("");
   const [ReqBirth, setReqBirth] = useState("");
   const [ReqPhone, setReqPhone] = useState("");
+  //
+  const [NoneBank, setNoneBank] = useState("");
+  const [NoneAccount, setNoneAccount] = useState("");
+  const [NoneRegion, setNoneRegion] = useState("");
+  const [NoneRegis, setNoneRegis] = useState("");
   // const [inputReqName, setInputReqName] = useState("");
+  const handlePhoneChange = (e) => {
+    const inputPhone = e.target.value;
+    // 가운데 부분을 '*'로 대체
+    const maskedPhone = maskPhone(inputPhone);
+    setReqPhone(maskedPhone);
+  };
+  // 전화번호를 가운데 '**'로 가린 문자열로 변환
+  const maskPhone = (phone) => {
+    const parts = phone.split("-"); // '-'를 기준으로 문자열을 나눕니다
+    if (parts.length === 3 && parts[1].length === 4) {
+      const middlePart = parts[1];
+      const maskedMiddlePart =
+        middlePart.substring(0, 1) + "**" + middlePart.substring(3, 4);
+      return `${parts[0]}-${maskedMiddlePart}-${parts[2]}`;
+    } else {
+      // 형식이 맞지 않는 경우, 원래 문자열 그대로 반환
+      return phone;
+    }
+  };
   // const [inputReqBirth, setInputBirth] = useState("");
   // const [inputReqPhone, setInputPhone] = useState("");
   // const [inputReqSubmit, setInputReqSubmit] = useState("");
@@ -135,6 +159,17 @@ const Check = () => {
   //   return ReqName.trim() === "" || ReqBirth.trim() === "";
   // };
   const ReqSubmit = () => {
+    if (
+      ReqName.trim() === "" ||
+      ReqBirth.trim() === "" ||
+      ReqPhone.trim() === "" ||
+      NoneBank.trim() === "" ||
+      NoneAccount.trim() === "" ||
+      NoneRegion.trim() === "" ||
+      NoneRegis.trim() === ""
+    ) {
+      alert("등록 전 선 조회 후 등록바랍니다.");
+    }
     if (
       ReqName.trim() === "" ||
       ReqBirth.trim() === "" ||
@@ -210,33 +245,57 @@ const Check = () => {
             </ScheInputLi>
             <ScheInputLi>
               {inputbank.map((input, AddBank) => (
-                <Input className="bankinput" key={AddBank} />
+                <Input
+                  className="bankinput"
+                  key={AddBank}
+                  value={NoneBank}
+                  onChange={(e) => setNoneBank(e.target.value)}
+                />
               ))}
             </ScheInputLi>
             <ScheInputLi>
               {inputaccount.map((input, AddAccount) => (
-                <Input className="accountinput" key={AddAccount} />
+                <Input
+                  className="accountinput"
+                  key={AddAccount}
+                  value={NoneAccount}
+                  onChange={(e) => setNoneAccount(e.target.value)}
+                />
               ))}
             </ScheInputLi>
             <ScheInputLi>
               {inputphone.map((input, AddPhone) => (
                 <Input
+                  type="phone"
+                  minlength="5"
+                  maxlength="13"
                   className="phoneinput"
                   key={AddPhone}
                   placeholder="필수입력"
                   value={ReqPhone}
-                  onChange={(e) => setReqPhone(e.target.value)}
+                  onChange={(e) => {
+                    setReqPhone(e.target.value);
+                    handlePhoneChange(e); // 추가 작업을 수행
+                  }}
                 />
               ))}
             </ScheInputLi>
             <ScheInputLi>
-              <Input className="input" />
+              <Input
+                className="input"
+                value={NoneRegion}
+                onChange={(e) => setNoneRegion(e.target.value)}
+              />
             </ScheInputLi>
             <ScheInputLi>
               <AddEmRed />
             </ScheInputLi>
             <ScheInputLi>
-              <Input className="input" />
+              <Input
+                className="input"
+                value={NoneRegis}
+                onChange={(e) => setNoneRegis(e.target.value)}
+              />
             </ScheInputLi>
             <ScheInputLi>히츠블루</ScheInputLi>
           </ScheInputUl>
